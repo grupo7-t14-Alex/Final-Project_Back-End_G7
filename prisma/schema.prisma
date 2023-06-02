@@ -9,3 +9,49 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          String @id
+  name        String
+  email       String @unique
+  password    String
+  cpf         String
+  telefone    String
+  dateOfBirth String
+  description String
+  seller      Boolean
+  createdAt   String
+
+  cars Car[]
+
+  @@map("users")
+}
+
+model Car {
+  id          String @id
+  beard       String
+  year        Int
+  color       String
+  milagre     Int
+  model       String
+  fuel        FuelType
+  price       Decimal
+  description String
+  coverPhoto  String
+  galery      String[]
+  published   String
+  createdAt   String
+
+  userId      String
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("cars")
+}
+
+enum FuelType {
+  Flex
+  Gasolina
+  Alcool
+  Diesel
+  Eletrico
+}

@@ -38,7 +38,7 @@ model Car {
   price       Decimal
   description String
   coverPhoto  String
-  galery      String[]
+  gallery      String[]
   published   String
   createdAt   String
 

@@ -12,23 +12,23 @@ export class Car {
 
   color: string;
 
-  milage: string;
+  milage: number;
 
   model: string;
 
   fuel: string;
 
-  price: number;
+  price: string;
 
   description: string;
 
   coverPhoto: string;
 
-  galery: [];
+  gallery: string[];
 
   published: boolean;
 
-  userId?: string;
+  userId: string;
 
   constructor() {
     this.id = randomUUID();

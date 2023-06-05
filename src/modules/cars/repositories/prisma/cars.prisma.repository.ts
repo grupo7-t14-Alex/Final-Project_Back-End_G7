@@ -13,10 +13,10 @@ export class CarsPrismaRepository implements CarsRepository {
     const car = new Car();
     Object.assign(car, {
       ...data,
-      //userId: userId,
+      userId: userId,
     });
     const newCar = await this.prisma.car.create({
-      data: { ...car, userId },
+      data: { ...car },
     });
 
     return newCar;

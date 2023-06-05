@@ -12,24 +12,35 @@ export class CarsPrismaRepository implements CarsRepository {
   async create(data: CreateCarDto, userId: string): Promise<Car> {
     const car = new Car();
     Object.assign(car, {
-      ...data
+      ...data,
     });
     const newCar = await this.prisma.car.create({
-      data: { ...car, userId}
+      data: { ...car, userId },
     });
     return newCar;
   }
 
-  findAll(): Car[] | Promise<Car[]> {
-    throw new Error('Method not implemented.');
+  async findAll(): Promise<Car[]> {
+    const cars = await this.prisma.car.findMany();
+    return cars;
   }
-  findOne(id: string): Car | Promise<Car> {
-    throw new Error('Method not implemented.');
+  async findOne(id: string): Promise<Car> {
+    const car = await this.prisma.car.findUnique({
+      where: { id },
+    });
+    return car;
   }
-  update(id: string, data: UpdateCarDto): Car | Promise<Car> {
-    throw new Error('Method not implemented.');
+  async update(id: string, data: UpdateCarDto): Promise<Car> {
+    const car = await this.prisma.car.update({
+      where: { id },
+      data: { ...data },
+    });
+
+    return car;
   }
-  remove(id: string): void | Promise<void> {
-    throw new Error('Method not implemented.');
+  async remove(id: string): Promise<void> {
+    await this.prisma.car.delete({
+      where: { id },
+    });
   }
 }

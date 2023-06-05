@@ -29,7 +29,7 @@ export class Car {
 
   published: boolean;
 
-  userId?: string;
+  userId: string;
 
   constructor() {
     this.id = randomUUID();

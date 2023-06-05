@@ -12,15 +12,14 @@ export class CarsPrismaRepository implements CarsRepository {
   async create(data: CreateCarDto, userId: string): Promise<Car> {
     const car = new Car();
     Object.assign(car, {
-      ...data,
-      //userId: userId,
+      ...data
     });
     const newCar = await this.prisma.car.create({
-      data: { ...car, userId },
+      data: { ...car, userId}
     });
-
     return newCar;
   }
+
   findAll(): Car[] | Promise<Car[]> {
     throw new Error('Method not implemented.');
   }

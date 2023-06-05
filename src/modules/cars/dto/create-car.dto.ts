@@ -29,7 +29,7 @@ export class CreateCarDto {
 
   @IsString()
   @IsNotEmpty()
-  milage: string;
+  milage: number;
 
   @IsString()
   @IsNotEmpty()
@@ -42,7 +42,7 @@ export class CreateCarDto {
 
   @IsNumber()
   @IsNotEmpty()
-  price: number;
+  price: string;
 
   @IsString()
   @IsNotEmpty()
@@ -54,7 +54,7 @@ export class CreateCarDto {
 
   @IsArray()
   @IsNotEmpty()
-  galery: [];
+  gallery: string[];
 
   @IsBoolean()
   @IsNotEmpty()

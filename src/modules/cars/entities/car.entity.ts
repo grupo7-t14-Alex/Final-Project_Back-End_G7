@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
 import * as moment from 'moment';
+import { FuelType } from '@prisma/client';
 
 export class Car {
   readonly id: string;
@@ -16,7 +17,7 @@ export class Car {
 
   model: string;
 
-  fuel: string;
+  fuel: FuelType;
 
   price: string;
 

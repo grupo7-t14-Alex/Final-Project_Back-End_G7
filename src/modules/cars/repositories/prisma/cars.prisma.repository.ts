@@ -13,14 +13,13 @@ export class CarsPrismaRepository implements CarsRepository {
     const car = new Car();
     Object.assign(car, {
       ...data,
-      userId: userId,
     });
     const newCar = await this.prisma.car.create({
-      data: { ...car },
+      data: { ...car, userId },
     });
-
     return newCar;
   }
+
   findAll(): Car[] | Promise<Car[]> {
     throw new Error('Method not implemented.');
   }

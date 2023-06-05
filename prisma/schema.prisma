@@ -35,11 +35,11 @@ model Car {
   milage      Int
   model       String
   fuel        FuelType
-  price       Decimal
+  price       String
   description String
   coverPhoto  String
-  gallery      String[]
-  published   String
+  gallery     String[]
+  published   Boolean
   createdAt   String
 
   userId      String

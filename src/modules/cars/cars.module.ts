@@ -4,6 +4,7 @@ import { CarsController } from './cars.controller';
 import { PrismaService } from 'src/dataBase/prisma.service';
 import { CarsRepository } from './repositories/cars.repository';
 import { CarsInMemoryRepository } from './repositories/in-memory/cars.in-memory.repository';
+import { CarsPrismaRepository } from './repositories/prisma/cars.prisma.repository';
 
 @Module({
   controllers: [CarsController],
@@ -12,7 +13,7 @@ import { CarsInMemoryRepository } from './repositories/in-memory/cars.in-memory.
     PrismaService,
     {
       provide: CarsRepository,
-      useClass: CarsInMemoryRepository,
+      useClass: CarsPrismaRepository,
     },
   ],
 })

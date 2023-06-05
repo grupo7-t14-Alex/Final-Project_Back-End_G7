@@ -6,12 +6,22 @@ import {
   IsNumber,
   IsString,
 } from 'class-validator';
-import { Car } from '../entities/car.entity';
+
+export enum Fuel {
+  diesel = 'Diesel',
+  ethanol = 'Etanol',
+  gasoline = 'Gasolina',
+  flex = 'Flex',
+}
 
 export class CreateCarDto {
   @IsString()
   @IsNotEmpty()
   brand: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  year: number;
 
   @IsString()
   @IsNotEmpty()
@@ -27,8 +37,8 @@ export class CreateCarDto {
 
   @IsString()
   @IsNotEmpty()
-  @IsEnum(Car)
-  fuel: string;
+  @IsEnum(Fuel)
+  fuel: Fuel;
 
   @IsNumber()
   @IsNotEmpty()
@@ -40,7 +50,7 @@ export class CreateCarDto {
 
   @IsString()
   @IsNotEmpty()
-  coverImg: string;
+  coverPhoto: string;
 
   @IsArray()
   @IsNotEmpty()

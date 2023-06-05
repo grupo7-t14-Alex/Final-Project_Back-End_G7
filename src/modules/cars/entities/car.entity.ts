@@ -1,34 +1,37 @@
 import { randomUUID } from 'crypto';
-
-export enum Fuel {
-  diesel = 'Diesel',
-  ethanol = 'Etanol',
-  gasoline = 'Gasolina',
-  flex = 'Flex',
-}
+import * as moment from 'moment';
 
 export class Car {
   readonly id: string;
+
   readonly createdAt: string;
+
   brand: string;
+
+  year: number;
+
   color: string;
+
   milage: string;
+
   model: string;
-  fuel: Fuel;
+
+  fuel: string;
+
   price: number;
+
   description: string;
-  coverImg: string;
+
+  coverPhoto: string;
+
   galery: [];
+
   published: boolean;
+
+  userId?: string;
 
   constructor() {
     this.id = randomUUID();
-    this.createdAt = Car.createDate();
-  }
-
-  static createDate(): string {
-    const date = Date.now();
-    const now = new Date(date);
-    return now.toDateString();
+    this.createdAt = this.createdAt = moment().format('DD/MM/YYYY HH:mm:ss');
   }
 }

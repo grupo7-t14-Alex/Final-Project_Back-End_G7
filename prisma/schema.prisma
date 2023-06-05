@@ -29,10 +29,10 @@ model User {
 
 model Car {
   id          String @id
-  beard       String
+  brand       String
   year        Int
   color       String
-  milagre     Int
+  milage      Int
   model       String
   fuel        FuelType
   price       Decimal
@@ -51,7 +51,6 @@ model Car {
 enum FuelType {
   Flex
   Gasolina
-  Alcool
+  Etanol
   Diesel
-  Eletrico
 }

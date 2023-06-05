@@ -6,8 +6,8 @@ import { CarsRepository } from './repositories/cars.repository';
 @Injectable()
 export class CarsService {
   constructor(private carsRepository: CarsRepository) {}
-  async create(createCarDto: CreateCarDto) {
-    const newCar = await this.carsRepository.create(createCarDto);
+  async create(createCarDto: CreateCarDto, userId: string) {
+    const newCar = await this.carsRepository.create(createCarDto, userId);
     return newCar;
   }
 

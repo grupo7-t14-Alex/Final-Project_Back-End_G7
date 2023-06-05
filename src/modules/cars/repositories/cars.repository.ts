@@ -3,7 +3,7 @@ import { UpdateCarDto } from '../dto/update-car.dto';
 import { Car } from '../entities/car.entity';
 
 export abstract class CarsRepository {
-  abstract create(data: CreateCarDto): Promise<Car> | Car;
+  abstract create(data: CreateCarDto, userId: string): Promise<Car> | Car;
   abstract findAll(): Promise<Car[]> | Car[];
   abstract findOne(id: string): Promise<Car | undefined> | Car;
   abstract update(

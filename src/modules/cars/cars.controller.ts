@@ -26,22 +26,26 @@ export class CarsController {
   }
 
   @Get()
+  @UseGuards(JWTAuthGuard)
   findAll() {
     return this.carsService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(JWTAuthGuard)
   findOne(@Param('id') id: string) {
     return this.carsService.findOne(id);
   }
 
   @Patch(':id')
+  @UseGuards(JWTAuthGuard)
   update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
     return this.carsService.update(id, updateCarDto);
   }
 
   @HttpCode(204)
   @Delete(':id')
+  @UseGuards(JWTAuthGuard)
   remove(@Param('id') id: string) {
     return this.carsService.remove(id);
   }

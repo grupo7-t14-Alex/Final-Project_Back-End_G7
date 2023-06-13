@@ -10,6 +10,7 @@ import {
 } from 'class-validator';
 import { hashSync } from 'bcryptjs';
 import { ApiProperty } from '@nestjs/swagger';
+import { CreateAddressDto } from 'src/modules/address/dto/create-address.dto';
 
 export class CreateUserDto {
   @ApiProperty({
@@ -94,4 +95,7 @@ export class CreateUserDto {
   @IsBoolean()
   @IsOptional()
   seller: boolean;
+
+  @IsNotEmpty()
+  address: CreateAddressDto
 }

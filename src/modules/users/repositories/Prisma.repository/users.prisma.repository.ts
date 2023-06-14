@@ -35,7 +35,7 @@ export class UsersPrismaRepository implements UsersRepository {
 
         const addressCreate = await this.prisma.address.create({
             data:{
-                ...addr, 
+                ...addr,
                 userId:newUser.id
             },
         })

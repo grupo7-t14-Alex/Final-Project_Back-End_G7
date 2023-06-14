@@ -42,7 +42,7 @@ export class CreateCarDto {
 
   @IsString()
   @IsNotEmpty()
-  price: string;
+  price: number;
 
   @IsString()
   @IsNotEmpty()

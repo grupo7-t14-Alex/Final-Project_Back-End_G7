@@ -19,7 +19,7 @@ export class Car {
 
   fuel: FuelType;
 
-  price: string;
+  price: number;
 
   description: string;
 

@@ -17,7 +17,7 @@ import { JWTAuthGuard } from '../auth/jwt.auth.guard';
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: CarsService) {}
+  constructor(private readonly carsService: CarsService) { }
 
   @Post()
   @UseGuards(JWTAuthGuard)
@@ -26,13 +26,11 @@ export class CarsController {
   }
 
   @Get()
-  @UseGuards(JWTAuthGuard)
   findAll() {
     return this.carsService.findAll();
   }
 
   @Get(':id')
-  @UseGuards(JWTAuthGuard)
   findOne(@Param('id') id: string) {
     return this.carsService.findOne(id);
   }

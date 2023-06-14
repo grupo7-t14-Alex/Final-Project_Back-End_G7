@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: 'http:// URL da Aplicação',
+    origin: 'http://localhost:3000',
   });
 
   const config = new DocumentBuilder()
@@ -28,6 +28,6 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

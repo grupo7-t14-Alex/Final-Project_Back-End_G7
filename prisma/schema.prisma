@@ -22,7 +22,8 @@ model User {
   seller      Boolean
   createdAt   String
 
-  cars Car[]
+  cars        Car[]
+  address     Address?
 
   @@map("users")
 }
@@ -48,6 +49,19 @@ model Car {
   @@map("cars")
 }
 
+model Address {
+  id String@id
+  cep String
+  state String
+  city String
+  street String
+  number String
+  complements String?
+  user User @relation(fields: [userId], references: [id])
+  userId String@unique
+
+  @@map("address")
+}
 enum FuelType {
   Flex
   Gasolina

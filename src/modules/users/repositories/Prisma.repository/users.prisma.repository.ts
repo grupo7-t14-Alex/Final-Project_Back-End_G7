@@ -5,7 +5,9 @@ import { UpdateUserDto } from "../../dto/update-user.dto";
 import { User } from "../../entities/user.entity";
 import { PrismaService } from "src/dataBase/prisma.service";
 import { plainToInstance } from "class-transformer";
-
+import { NotFoundException } from "@nestjs/common/exceptions"
+import { CreateAddressDto } from "src/modules/address/dto/create-address.dto";
+import { Address } from "src/modules/address/entities/address.entity";
 
 @Injectable()
 export class UsersPrismaRepository implements UsersRepository {
@@ -14,13 +16,36 @@ export class UsersPrismaRepository implements UsersRepository {
 
     async create(data: CreateUserDto): Promise<User> {
         const user = new User()
+        const addr = new Address()
+
+        const {address, ...userData} = data
         Object.assign(user, {
-            ...data
+            ...userData
+        })
+        Object.assign(addr, {
+            ...address
         })
         const newUser = await this.prisma.user.create({
             data: {...user}
         })
-        return plainToInstance(User, newUser)
+
+        if(!newUser) {
+            throw new NotFoundException("user not found")
+        }
+
+        const addressCreate = await this.prisma.address.create({
+            data:{
+                ...addr,
+                userId:newUser.id
+            },
+        })
+
+        const userAddress = {
+            user: newUser,
+            address: addressCreate
+        }
+
+        return plainToInstance(User, {...newUser,...addressCreate})
     }
 
     async findAll(): Promise<any> {

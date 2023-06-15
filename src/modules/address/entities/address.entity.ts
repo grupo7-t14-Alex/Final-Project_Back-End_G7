@@ -8,7 +8,7 @@ export class Address {
     street: string;
     number: string;
     complements?: string;
-    userId: string
+    readonly userId: string
 
     constructor() {
         this.id = randomUUID();

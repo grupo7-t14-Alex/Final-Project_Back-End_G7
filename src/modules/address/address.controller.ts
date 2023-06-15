@@ -1,34 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AddressService } from './address.service';
-import { CreateAddressDto } from './dto/create-address.dto';
-import { UpdateAddressDto } from './dto/update-address.dto';
+import { Controller,Body, Patch, Param, UseGuards, Request } from "@nestjs/common";
+import { AddressService } from "./address.service";
 
-@Controller('address')
+import { UpdateAddressDto } from "./dto/update-address.dto";
+import { JWTAuthGuard } from "../auth/jwt.auth.guard";
+
+@Controller("address")
 export class AddressController {
   constructor(private readonly addressService: AddressService) {}
-
-  @Post()
-  create(@Body() createAddressDto: CreateAddressDto) {
-    return this.addressService.create(createAddressDto);
+  
+  @Patch(":id")
+  @UseGuards(JWTAuthGuard)
+  update(@Param("id") addressID: string, @Body() updateAddressDto: UpdateAddressDto, @Request() req) {
+    const userId = req.user.id
+    console.log(userId)
+    return this.addressService.update(addressID, updateAddressDto,userId);
   }
 
-  @Get()
-  findAll() {
-    return this.addressService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.addressService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAddressDto: UpdateAddressDto) {
-    return this.addressService.update(+id, updateAddressDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.addressService.remove(+id);
-  }
+  
 }

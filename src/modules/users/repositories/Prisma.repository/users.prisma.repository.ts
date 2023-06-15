@@ -6,7 +6,6 @@ import { User } from "../../entities/user.entity";
 import { PrismaService } from "src/dataBase/prisma.service";
 import { plainToInstance } from "class-transformer";
 import { NotFoundException } from "@nestjs/common/exceptions"
-import { CreateAddressDto } from "src/modules/address/dto/create-address.dto";
 import { Address } from "src/modules/address/entities/address.entity";
 
 @Injectable()
@@ -22,9 +21,7 @@ export class UsersPrismaRepository implements UsersRepository {
         Object.assign(user, {
             ...userData
         })
-        Object.assign(addr, {
-            ...address
-        })
+
         const newUser = await this.prisma.user.create({
             data: {...user}
         })
@@ -33,6 +30,16 @@ export class UsersPrismaRepository implements UsersRepository {
             throw new NotFoundException("user not found")
         }
 
+        Object.assign(addr, {
+            cep: address.cep,
+            state: address.state,
+            city: address.city,
+            street: address.street,
+            number: address.number,
+            complements: address.complements || null,
+            userId: newUser.id
+        })
+        
         const addressCreate = await this.prisma.address.create({
             data:{
                 ...addr, 
@@ -41,11 +48,11 @@ export class UsersPrismaRepository implements UsersRepository {
         })
 
         const userAddress = {
-            user: newUser,
+            ...newUser,
             address: addressCreate
         }
 
-        return plainToInstance(User, {...newUser,...addressCreate})
+        return plainToInstance(User, userAddress)
     }
 
     async findAll(): Promise<any> {

@@ -36,7 +36,8 @@ model Car {
   milage      Int
   model       String
   fuel        FuelType
-  price       Float
+  price       String
+  fipeTable   String
   description String
   coverPhoto  String
   gallery     String[]

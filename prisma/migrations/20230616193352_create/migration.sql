@@ -8,9 +8,9 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
-    "telefone" TEXT NOT NULL,
-    "dateOfBirth" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "birthdate" TEXT NOT NULL,
+    "description" TEXT,
     "seller" BOOLEAN NOT NULL,
     "createdAt" TEXT NOT NULL,
 
@@ -27,6 +27,7 @@ CREATE TABLE "cars" (
     "model" TEXT NOT NULL,
     "fuel" "FuelType" NOT NULL,
     "price" TEXT NOT NULL,
+    "fipeTable" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "coverPhoto" TEXT NOT NULL,
     "gallery" TEXT[],
@@ -37,8 +38,28 @@ CREATE TABLE "cars" (
     CONSTRAINT "cars_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "address" (
+    "id" TEXT NOT NULL,
+    "cep" TEXT NOT NULL,
+    "state" TEXT NOT NULL,
+    "city" TEXT NOT NULL,
+    "street" TEXT NOT NULL,
+    "number" TEXT NOT NULL,
+    "complements" TEXT,
+    "userId" TEXT NOT NULL,
+
+    CONSTRAINT "address_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "address_userId_key" ON "address"("userId");
+
 -- AddForeignKey
 ALTER TABLE "cars" ADD CONSTRAINT "cars_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "address" ADD CONSTRAINT "address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

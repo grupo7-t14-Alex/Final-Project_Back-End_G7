@@ -19,7 +19,9 @@ export class Car {
 
   fuel: FuelType;
 
-  price: number;
+  price: string;
+
+  fipeTable: string;
 
   description: string;
 

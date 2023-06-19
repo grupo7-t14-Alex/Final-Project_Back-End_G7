@@ -21,7 +21,7 @@ model User {
   description String?
   seller      Boolean
   createdAt   String
-
+  reset_token String?
   cars        Car[]
   address     Address?
 

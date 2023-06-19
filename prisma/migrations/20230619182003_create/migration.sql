@@ -13,6 +13,7 @@ CREATE TABLE "users" (
     "description" TEXT,
     "seller" BOOLEAN NOT NULL,
     "createdAt" TEXT NOT NULL,
+    "reset_token" TEXT,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );

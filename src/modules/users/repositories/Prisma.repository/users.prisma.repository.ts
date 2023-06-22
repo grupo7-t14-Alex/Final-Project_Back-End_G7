@@ -7,6 +7,7 @@ import { PrismaService } from "src/dataBase/prisma.service";
 import { plainToInstance } from "class-transformer";
 import { NotFoundException } from "@nestjs/common/exceptions"
 import { Address } from "src/modules/address/entities/address.entity";
+import { hashSync } from "bcryptjs";
 
 @Injectable()
 export class UsersPrismaRepository implements UsersRepository {
@@ -56,11 +57,7 @@ export class UsersPrismaRepository implements UsersRepository {
     }
 
     async findAll(): Promise<any> {
-        const users = await this.prisma.user.findMany({ 
-            include: {
-                cars: true
-            }
-        })
+        const users = await this.prisma.user.findMany()
         return plainToInstance(User, users)
     }
 
@@ -68,7 +65,8 @@ export class UsersPrismaRepository implements UsersRepository {
         const user = await this.prisma.user.findUnique({
             where: {id},
             include: {
-                cars: true
+                address: true, 
+                cars: true,
             }
         })
         return plainToInstance(User, user)
@@ -94,5 +92,28 @@ export class UsersPrismaRepository implements UsersRepository {
             where: {id}
         })
     }
-    
+
+    async updateToken(email: string, resetToken: string): Promise<void> {
+        await this.prisma.user.update({
+            where: {email},
+            data: {reset_token: resetToken}
+        })
+    }
+
+    async findByToken(token: string): Promise<User> {
+        const user = await this.prisma.user.findFirst({
+                where: {reset_token: token}
+            })
+        return user
+    }
+
+    async updatePassword(id: string, password: string): Promise<void> {
+        await this.prisma.user.update({
+            where: {id},
+            data: {
+                password: hashSync(password, 10),
+                reset_token: null,
+            }
+        })
+    }
 }   

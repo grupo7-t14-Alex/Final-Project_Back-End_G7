@@ -42,7 +42,11 @@ export class CreateCarDto {
 
   @IsNumber()
   @IsNotEmpty()
-  price: number;
+  price: string;
+
+  @IsString()
+  @IsNotEmpty()
+  fipeTable: string;
 
   @IsString()
   @IsNotEmpty()

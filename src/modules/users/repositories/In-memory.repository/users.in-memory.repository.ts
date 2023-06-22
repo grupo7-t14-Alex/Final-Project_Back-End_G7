@@ -47,4 +47,15 @@ export class UserInMemoryRepository implements UsersRepository {
         this.database.splice(userIndex, 1)
     }
 
+    async updateToken(email: string, resetToken: string): Promise<void> {
+        throw new Error('not');
+    }
+
+    async updatePassword(id: string, password: string): Promise<void> {
+        throw new Error('not');
+    }
+
+    async findByToken(token: string): Promise<User> {
+        throw new Error('not');
+    }
 }

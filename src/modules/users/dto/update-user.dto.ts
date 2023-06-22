@@ -87,5 +87,4 @@ export class UpdateUserDto {
     @IsOptional()
     @MaxLength(250)
     seller: boolean;
-
 }

@@ -57,7 +57,7 @@ model Address {
   street String
   number String
   complements String?
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id],onDelete: Cascade)
   userId String@unique
 
   @@map("address")

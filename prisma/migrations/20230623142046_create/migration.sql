@@ -53,6 +53,17 @@ CREATE TABLE "address" (
     CONSTRAINT "address_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "commentaries" (
+    "id" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "createdAt" TEXT NOT NULL,
+    "userId" TEXT NOT NULL,
+    "carId" TEXT NOT NULL,
+
+    CONSTRAINT "commentaries_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
@@ -63,4 +74,10 @@ CREATE UNIQUE INDEX "address_userId_key" ON "address"("userId");
 ALTER TABLE "cars" ADD CONSTRAINT "cars_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "address" ADD CONSTRAINT "address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "address" ADD CONSTRAINT "address_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "commentaries" ADD CONSTRAINT "commentaries_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "commentaries" ADD CONSTRAINT "commentaries_carId_fkey" FOREIGN KEY ("carId") REFERENCES "cars"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

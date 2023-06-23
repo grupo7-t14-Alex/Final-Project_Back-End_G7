@@ -26,6 +26,7 @@ export class UsersController {
 
 
   @Get(':id')
+  @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
   @UseGuards(JWTAuthGuard)
   findOne(@Param('id') id: string) {
@@ -33,6 +34,7 @@ export class UsersController {
   }
 
   @Patch(':id')
+  @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
   @UseGuards(JWTAuthGuard)
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
@@ -41,6 +43,7 @@ export class UsersController {
 
   @HttpCode(204)
   @Delete(':id')
+  @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
   @UseGuards(JWTAuthGuard)
   remove(@Param('id') id: string) {

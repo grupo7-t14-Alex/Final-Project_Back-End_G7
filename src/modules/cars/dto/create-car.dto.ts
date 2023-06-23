@@ -40,7 +40,7 @@ export class CreateCarDto {
   @IsEnum(Fuel)
   fuel: Fuel;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
   price: string;
 

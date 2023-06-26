@@ -10,7 +10,7 @@ import { JWTAuthGuard } from '../auth/jwt.auth.guard';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post('')
   create(@Body() createUserDto: CreateUserDto) {
@@ -19,6 +19,7 @@ export class UsersController {
 
   @Get('')
   @ApiBearerAuth()
+  @UseGuards(JWTAuthGuard)
   findAll() {
     return this.usersService.findAll();
   }
@@ -27,6 +28,7 @@ export class UsersController {
   @Get(':id')
   @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
+  @UseGuards(JWTAuthGuard)
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
@@ -34,6 +36,7 @@ export class UsersController {
   @Patch(':id')
   @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
+  @UseGuards(JWTAuthGuard)
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
@@ -42,6 +45,7 @@ export class UsersController {
   @Delete(':id')
   @UseGuards(JWTAuthGuard)
   @ApiBearerAuth()
+  @UseGuards(JWTAuthGuard)
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);
   }

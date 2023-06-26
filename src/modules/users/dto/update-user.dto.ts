@@ -33,7 +33,7 @@ export class UpdateUserDto {
     @IsString()
     @IsOptional()
     @MinLength(8)
-    @Transform(({value}: {value: string}) => hashSync(value, 10), {
+    @Transform(({ value }: { value: string }) => hashSync(value, 10), {
         groups: ['transform']
     })
     password: string;
@@ -85,6 +85,5 @@ export class UpdateUserDto {
     })
     @IsBoolean()
     @IsOptional()
-    @MaxLength(250)
     seller: boolean;
 }

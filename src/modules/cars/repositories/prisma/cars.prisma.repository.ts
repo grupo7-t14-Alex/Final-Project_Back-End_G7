@@ -7,7 +7,7 @@ import { PrismaService } from 'src/dataBase/prisma.service';
 
 @Injectable()
 export class CarsPrismaRepository implements CarsRepository {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(data: CreateCarDto, userId: string): Promise<Car> {
     const car = new Car();
@@ -22,9 +22,9 @@ export class CarsPrismaRepository implements CarsRepository {
 
   async findAll(): Promise<Car[]> {
     const cars = await this.prisma.car.findMany({
-      include:{
+      include: {
         user: {
-          select:{
+          select: {
             name: true
           }
         }

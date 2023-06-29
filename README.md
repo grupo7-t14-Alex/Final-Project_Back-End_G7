@@ -50,12 +50,13 @@ A aplicação tambem permite o usuario a recuperar su senha atravez do e-mail ca
 - [PostgreSQL](https://www.postgresql.org/)
 - [Prisma](https://www.prisma.io/)
 - [Passaport JWT](https://www.passportjs.org/packages/passport-jwt/)
+- [Swegger](https://swagger.io/docs/)
 
-A URL base da aplicação: http://localhost:3000
+A URL base da aplicação: http://localhost:3001
 
 ---
 
-## 2. Diagrama ER
+## 2. Diagrama
 
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
@@ -109,8 +110,8 @@ npm run start:dev
 
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
-Para acessar os endpoints e a documentação, rode a aplicação e acesse em seu navegador: http://localhost:3000/doc
+Para acessar os endpoints e a documentação, rode a aplicação e acesse em seu navegador: http://localhost:3001/doc
 
 
 Obs: Acesse o repositório Frone End deste projeto.
-[Link Frontend](https://github.com/Guiles10/ProjetoFullStack-Front-End-Guiles10)
+[Link Frontend](https://github.com/grupo7-t14-Alex/Final-Project_Front-End_G7)

@@ -9,3 +9,80 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          String  @id
+  name        String
+  email       String  @unique
+  password    String
+  cpf         String
+  phone       String
+  birthdate   String
+  description String?
+  seller      Boolean
+  createdAt   String
+  reset_token String?
+  cars        Car[]
+  address     Address?
+  commentaries Commentaries[]
+
+  @@map("users")
+}
+
+model Car {
+  id          String   @id
+  brand       String
+  year        Int
+  color       String
+  milage      Int
+  model       String
+  fuel        FuelType
+  price       String
+  fipeTable   String
+  description String
+  coverPhoto  String
+  gallery     String[]
+  published   Boolean
+  createdAt   String
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  commentaries Commentaries[]
+
+  @@map("cars")
+}
+
+model Address {
+  id          String@id
+  cep         String
+  state       String
+  city        String
+  street      String
+  number      String
+  complements String?
+
+  user User @relation(fields: [userId], references: [id],onDelete: Cascade)
+  userId String@unique
+
+  @@map("address")
+}
+
+model Commentaries {
+  id    String @id
+  description String
+  createdAt   String
+  user  User  @relation(fields: [userId], references: [id])
+  userId String
+  car Car @relation(fields: [carId], references: [id])
+  carId String
+
+  @@map("commentaries")
+}
+
+enum FuelType {
+  Flex
+  Gasolina
+  Etanol
+  Diesel
+}

@@ -1,15 +1,31 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  HttpCode,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
+import { JWTAuthGuard } from '../auth/jwt.auth.guard';
+import { ApiTags } from "@nestjs/swagger";
+
+@ApiTags('Cars')
 
 @Controller('cars')
 export class CarsController {
-  constructor(private readonly carsService: CarsService) {}
+  constructor(private readonly carsService: CarsService) { }
 
   @Post()
-  create(@Body() createCarDto: CreateCarDto) {
-    return this.carsService.create(createCarDto);
+  @UseGuards(JWTAuthGuard)
+  create(@Body() createCarDto: CreateCarDto, @Request() req) {
+    return this.carsService.create(createCarDto, req.user.id);
   }
 
   @Get()
@@ -19,16 +35,19 @@ export class CarsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.carsService.findOne(+id);
+    return this.carsService.findOne(id);
   }
 
   @Patch(':id')
+  @UseGuards(JWTAuthGuard)
   update(@Param('id') id: string, @Body() updateCarDto: UpdateCarDto) {
-    return this.carsService.update(+id, updateCarDto);
+    return this.carsService.update(id, updateCarDto);
   }
 
+  @HttpCode(204)
   @Delete(':id')
+  @UseGuards(JWTAuthGuard)
   remove(@Param('id') id: string) {
-    return this.carsService.remove(+id);
+    return this.carsService.remove(id);
   }
 }

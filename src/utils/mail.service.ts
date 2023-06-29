@@ -54,6 +54,7 @@ export class MailService {
             subject: "Reset Passoword",
             text: emailBody,
         }
+        
         return emailTamplate
     }
 }

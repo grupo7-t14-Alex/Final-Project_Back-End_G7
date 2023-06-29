@@ -3,6 +3,9 @@ import { AddressService } from "./address.service";
 
 import { UpdateAddressDto } from "./dto/update-address.dto";
 import { JWTAuthGuard } from "../auth/jwt.auth.guard";
+import { ApiTags } from "@nestjs/swagger";
+
+@ApiTags('Address')
 
 @Controller("address")
 export class AddressController {

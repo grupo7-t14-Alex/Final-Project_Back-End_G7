@@ -13,6 +13,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) { }
 
   @Post('')
+  @ApiBearerAuth()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -23,7 +24,6 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
-
 
   @Get(':id')
   @UseGuards(JWTAuthGuard)
@@ -51,6 +51,7 @@ export class UsersController {
   }
 
   @HttpCode(200)
+  @ApiBearerAuth()
   @Post('resetpass')
   async sendEmailResetPassowrd(@Body('email') email: string){
     await this.usersService.sendMailResetPassword(email)
@@ -58,6 +59,7 @@ export class UsersController {
   }
 
   @HttpCode(200)
+  @ApiBearerAuth()
   @Patch('resetpass/:token')
   async resetPassword(@Param('token') token: string, @Body('password') password: string){
     await this.usersService.resetPassword(password, token)

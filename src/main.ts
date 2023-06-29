@@ -11,8 +11,8 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Contacts')
-    .setDescription('See your Contacts')
+    .setTitle('Motors Shop')
+    .setDescription('Doc API, Motors Shop')
     .setVersion('0.0.1')
     .addBearerAuth()
     .build();

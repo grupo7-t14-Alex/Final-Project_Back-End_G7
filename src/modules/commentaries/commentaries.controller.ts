@@ -4,6 +4,9 @@ import { JWTAuthGuard } from "../auth/jwt.auth.guard";
 import { CreateCommentaryDto } from "./dto/create-commentary.dto";
 import { UpdateCommentaryDto } from "./dto/update-commentary.dto";
 import { HttpCode } from "@nestjs/common/decorators";
+import { ApiTags } from "@nestjs/swagger";
+
+@ApiTags('Commentaries')
 
 @Controller('commentaries')
 export class CommentariesController {

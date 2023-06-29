@@ -14,7 +14,6 @@ export class SendEmailDto {
   @IsNotEmpty()
   subject: string;
 
- 
   @IsString()
   @IsNotEmpty()
   text: string;

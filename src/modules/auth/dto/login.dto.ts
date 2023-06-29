@@ -13,7 +13,7 @@ export class LoginDto {
   @ApiProperty({
     description: 'User password (min 8 charactere)',
     type: String,
-    default: '********',
+    default: '!12345678',
   })
   @IsString()
   password: string;

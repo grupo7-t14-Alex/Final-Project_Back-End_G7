@@ -14,6 +14,9 @@ import { CarsService } from './cars.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { UpdateCarDto } from './dto/update-car.dto';
 import { JWTAuthGuard } from '../auth/jwt.auth.guard';
+import { ApiTags } from "@nestjs/swagger";
+
+@ApiTags('Cars')
 
 @Controller('cars')
 export class CarsController {

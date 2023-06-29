@@ -69,7 +69,7 @@ export class UpdateUserDto {
     dateOfBirth: string;
 
     @ApiProperty({
-        description: 'descrição',
+        description: 'Descrição',
         type: String,
         default: 'texto'
     })
@@ -81,7 +81,7 @@ export class UpdateUserDto {
     @ApiProperty({
         description: 'Define se o usuario é vendedor ou não',
         type: Boolean,
-        default: 'False'
+        default: 'True'
     })
     @IsBoolean()
     @IsOptional()

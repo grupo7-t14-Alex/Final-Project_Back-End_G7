@@ -96,6 +96,17 @@ export class CreateUserDto {
   @IsOptional()
   seller: boolean;
 
+  @ApiProperty({
+    description: 'Adicione o Endereço',
+    type: String,
+    default:`cep: 98300000",
+      city: Porto Alegre,
+      complement: Ap 401,
+      number: 148,
+      state: RS,
+      street: Rua Júlio Pereira
+    `
+  })
   @IsNotEmpty()
   address: CreateAddressDto
 }

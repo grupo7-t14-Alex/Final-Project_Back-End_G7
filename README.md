@@ -26,48 +26,95 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+# Olá, sejá bem vindo !!
+# Projeto Back End => AccOrganized
 
-```bash
-$ npm install
+## Tabela de Conteúdos
+
+- [Visão Geral](#1-visão-geral)
+- [Diagrama ER](#2-diagrama-er)
+- [Início Rápido](#3-início-rápido)
+  - [Instalando dependências](#31-instalando-dependências)
+  - [Variáveis de ambiente](#32-variáveis-de-ambiente)
+  - [Migrations](#33-migrations)
+  - [Rodando a aplicação](#34-rodando-a-aplicação)
+- [Endpoints](#4-endpoints)
+
+---
+
+## 1. Visão Geral
+
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+Trata-se de uma API que gerencia contatos de um usuário, sendo possível fazer o cadastro com nome, email e telefone. Possui um CRUD completo para os contatos e também para o usuário, além de autenticação. As tecnologias utilizadas foram:
+
+- [NodeJS](https://nodejs.org/en/)
+- [Nest](https://nestjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Prisma](https://www.prisma.io/)
+- [Passaport JWT](https://www.passportjs.org/packages/passport-jwt/)
+
+A URL base da aplicação: http://localhost:3000
+
+---
+
+## 2. Diagrama ER
+
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+Diagrama ER da API definindo as relações entre as tabelas do banco de dados.
+
+![DER](DER.png)
+
+---
+
+## 3. Início Rápido
+
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+### 3.1. Instalando Dependências
+
+Clone o projeto em sua máquina e instale as dependências com o comando:
+
+```shell
+npm install
 ```
 
-## Running the app
+### 3.2. Variáveis de Ambiente
 
-```bash
-# development
-$ npm run start
+Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+cp .env.example .env
 ```
 
-## Test
+Configure suas variáveis de ambiente com suas credenciais do Postgres, uma nova database da sua escolha e a chave-secreta.
 
-```bash
-# unit tests
-$ npm run test
+### 3.3. Migrations
 
-# e2e tests
-$ npm run test:e2e
+Execute as migrations com o comando:
 
-# test coverage
-$ npm run test:cov
+```
+npx prisma migrate dev
 ```
 
-## Support
+### 3.4 Rodando a aplicação
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Para rodar a aplicação, utilize o comando:
 
-## Stay in touch
+```
+npm run start:dev
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+## 4. Endpoints
 
-Nest is [MIT licensed](LICENSE).
+[ Voltar para o topo ](#tabela-de-conteúdos)
+
+Para acessar os endpoints e a documentação, rode a aplicação e acesse em seu navegador: http://localhost:3000/doc
+
+
+Obs: Acesse o repositório Frone End deste projeto.
+[Link Frontend](https://github.com/Guiles10/ProjetoFullStack-Front-End-Guiles10)

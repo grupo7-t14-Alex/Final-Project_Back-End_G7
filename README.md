@@ -22,8 +22,7 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-# Olá, sejá bem vindo !!
-# Projeto Back End => Motors Shop
+# Olá, sejá bem vindo ao Projeto Back End => Motors Shop
 
 ## Tabela de Conteúdos
 
@@ -42,7 +41,8 @@
 
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
-Trata-se de uma API que gerencia contatos de um usuário, sendo possível fazer o cadastro com nome, email e telefone. Possui um CRUD completo para os contatos e também para o usuário, além de autenticação. As tecnologias utilizadas foram:
+Trata-se de uma API que gerencia um CRUD completo de usuarios, carros, comentarios, sendo possível criar um usuário e escolher entre comprador ou vendedor, o vendedor pode cadastrar carros para vender, colocando as informações do carro e buscar o valor da fipe pela API Kenzie Kars (https://kenzie-kars.herokuapp.com/). Qualquer usuario pode comentar des de que esteja logado e com o Token ativo.
+A aplicação tambem permite o usuario a recuperar su senha atravez do e-mail cadastrado.
 
 - [NodeJS](https://nodejs.org/en/)
 - [Nest](https://nestjs.com/)

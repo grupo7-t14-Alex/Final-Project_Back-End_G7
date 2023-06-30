@@ -93,5 +93,5 @@ npm run start:dev
 Para acessar os endpoints e a documentação, rode a aplicação e acesse em seu navegador: http://localhost:3001/doc
 
 
-Obs: Acesse o repositório Frone End deste projeto.
+Obs: Acesse o repositório Front End deste projeto.
 [Link Frontend](https://github.com/grupo7-t14-Alex/Final-Project_Front-End_G7)

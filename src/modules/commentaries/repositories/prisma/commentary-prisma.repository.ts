@@ -32,15 +32,28 @@ export class CommentaryPrismaRepository implements CommentaryRepository {
 
     async findAll(carId: string): Promise<Commentary[]> {
         const commentaries = await this.prisma.commentaries.findMany({
-            where: { carId: carId }
-        })
+            where: { carId: carId },
+            include: {
+                user: {
+                    select: {
+                        name: true
+                    }, 
+                }
+            }})
 
         return commentaries
     }
 
     async findOne(id: string): Promise<Commentary> {
         const commentary = await this.prisma.commentaries.findUnique({
-            where: { id }
+            where: { id },
+            include: {
+                user: {
+                    select: {
+                        name: true
+                    }, 
+                }
+            }
         })
 
         if (!commentary) {

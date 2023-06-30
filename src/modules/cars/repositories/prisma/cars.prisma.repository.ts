@@ -27,7 +27,7 @@ export class CarsPrismaRepository implements CarsRepository {
           select: {
             name: true
           }
-        }
+        },
       }
     });
 
@@ -36,6 +36,24 @@ export class CarsPrismaRepository implements CarsRepository {
   async findOne(id: string): Promise<Car> {
     const car = await this.prisma.car.findUnique({
       where: { id },
+      include: {
+        user: {
+          select: {
+            name: true
+          }
+        },
+        commentaries: {
+          select: {
+            description: true,
+            createdAt: true,
+            user: {
+              select: {
+                name: true
+              }
+            }
+          }
+        },
+      }
     });
     return car;
   }

@@ -58,5 +58,6 @@ export class UpdateAddressDto {
 
     @IsString()
     @IsNotEmpty()
+    @IsOptional()
     userId: string;
 }

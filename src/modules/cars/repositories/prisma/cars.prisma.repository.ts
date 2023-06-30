@@ -40,7 +40,17 @@ export class CarsPrismaRepository implements CarsRepository {
         user: {
           select: {
             name: true,
+          },
+        },
+        commentaries: {
+          select: {
             description: true,
+            createdAt: true,
+            user: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
       },

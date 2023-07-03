@@ -7,7 +7,7 @@ import { PrismaService } from 'src/dataBase/prisma.service';
 
 @Injectable()
 export class CarsPrismaRepository implements CarsRepository {
-  constructor(private prisma: PrismaService) { }
+  constructor(private prisma: PrismaService) {}
 
   async create(data: CreateCarDto, userId: string): Promise<Car> {
     const car = new Car();
@@ -25,10 +25,10 @@ export class CarsPrismaRepository implements CarsRepository {
       include: {
         user: {
           select: {
-            name: true
-          }
+            name: true,
+          },
         },
-      }
+      },
     });
 
     return cars;
@@ -39,8 +39,8 @@ export class CarsPrismaRepository implements CarsRepository {
       include: {
         user: {
           select: {
-            name: true
-          }
+            name: true,
+          },
         },
         commentaries: {
           select: {
@@ -48,12 +48,12 @@ export class CarsPrismaRepository implements CarsRepository {
             createdAt: true,
             user: {
               select: {
-                name: true
-              }
-            }
-          }
+                name: true,
+              },
+            },
+          },
         },
-      }
+      },
     });
     return car;
   }

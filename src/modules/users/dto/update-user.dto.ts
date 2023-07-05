@@ -33,7 +33,7 @@ export class UpdateUserDto {
     @IsString()
     @IsOptional()
     @MinLength(8)
-    @Transform(({value}: {value: string}) => hashSync(value, 10), {
+    @Transform(({ value }: { value: string }) => hashSync(value, 10), {
         groups: ['transform']
     })
     password: string;
@@ -69,7 +69,7 @@ export class UpdateUserDto {
     dateOfBirth: string;
 
     @ApiProperty({
-        description: 'descrição',
+        description: 'Descrição',
         type: String,
         default: 'texto'
     })
@@ -81,11 +81,9 @@ export class UpdateUserDto {
     @ApiProperty({
         description: 'Define se o usuario é vendedor ou não',
         type: Boolean,
-        default: 'False'
+        default: 'True'
     })
     @IsBoolean()
     @IsOptional()
-    @MaxLength(250)
     seller: boolean;
-
 }

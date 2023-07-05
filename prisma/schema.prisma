@@ -11,47 +11,78 @@ datasource db {
 }
 
 model User {
-  id          String @id
+  id          String  @id
   name        String
-  email       String @unique
+  email       String  @unique
   password    String
   cpf         String
-  telefone    String
-  dateOfBirth String
-  description String
+  phone       String
+  birthdate   String
+  description String?
   seller      Boolean
   createdAt   String
-
-  cars Car[]
+  reset_token String?
+  cars        Car[]
+  address     Address?
+  commentaries Commentaries[]
 
   @@map("users")
 }
 
 model Car {
-  id          String @id
-  beard       String
+  id          String   @id
+  brand       String
   year        Int
   color       String
-  milagre     Int
+  milage      Int
   model       String
   fuel        FuelType
-  price       Decimal
+  price       String
+  fipeTable   String
   description String
   coverPhoto  String
-  gallery      String[]
-  published   String
+  gallery     String[]
+  published   Boolean
   createdAt   String
 
-  userId      String
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  commentaries Commentaries[]
 
   @@map("cars")
+}
+
+model Address {
+  id          String@id
+  cep         String
+  state       String
+  city        String
+  street      String
+  number      String
+  complements String?
+
+  user User @relation(fields: [userId], references: [id],onDelete: Cascade)
+  userId String@unique
+
+  @@map("address")
+}
+
+model Commentaries {
+  id    String @id
+  description String
+  createdAt   String
+  user  User  @relation(fields: [userId], references: [id])
+  userId String
+  car Car @relation(fields: [carId], references: [id])
+  carId String
+
+  @@map("commentaries")
 }
 
 enum FuelType {
   Flex
   Gasolina
-  Alcool
+  Etanol
   Diesel
-  Eletrico
 }

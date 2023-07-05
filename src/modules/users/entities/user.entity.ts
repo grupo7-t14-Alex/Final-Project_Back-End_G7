@@ -1,31 +1,31 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID } from 'node:crypto';
 import * as moment from 'moment';
-import { Exclude } from "class-transformer";
+import { Exclude } from 'class-transformer';
 
 export class User {
-    readonly id: string;
-    
-    name: string;
+  readonly id: string;
 
-    email: string;
+  name: string;
 
-    @Exclude()
-    password: string;
+  email: string;
 
-    cpf: string;
+  @Exclude()
+  password: string;
 
-    telefone: string;
+  cpf: string;
 
-    dateOfBirth: string;
+  phone: string;
 
-    description: string;
+  birthdate: string;
 
-    seller: boolean;
+  description: string;
 
-    readonly createdAt: string;
+  seller: boolean;
 
-    constructor(){
-        this.id = randomUUID();
-        this.createdAt = moment().format('DD/MM/YYYY HH:mm:ss');
-    }
+  readonly createdAt: string;
+
+  constructor() {
+    this.id = randomUUID();
+    this.createdAt = moment().format('DD/MM/YYYY HH:mm:ss');
+  }
 }
